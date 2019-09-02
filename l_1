@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+
+using namespace std;
+
+void string_deleting(string &str)
+{
+    stringstream buffer(str);
+    str = "";
+    bool first = true;
+    while (!buffer.eof())
+    {
+        string buffs;
+        buffer >> buffs;
+        if (!first)
+            str+=buffs+" ";
+        first = false;
+    }
+    cout << "\nString after first word delete is : "<<str<<endl;
+}
+
+void string_itterator (string &str)
+{
+    int pos = str.find(' ');
+    str.erase(0,pos+1);
+    cout << "\nString after first word delete is : "<<str<<endl;
+}
+
+void string_array (string &str)
+{
+    int pos = str.find(' ') + 1;
+    int size = str.length();
+    for (int i = 0; i < size; i++)
+    {
+        str[i] = str[pos];
+        str[pos] = ' ';
+        if (pos < size)
+            pos++;
+    }
+    while (str[str.length()-1] == ' ')
+    {
+        str.erase(str.length()-1);
+    }
+    cout << "\nString after first word delete is : "<<str<<endl;
+}
+
+int main()
+{
+    cout << "Enter your string: ";
+    string str;
+    getline(cin,str);
+    string_deleting(str);
+    string_itterator(str);
+    string_array(str);
+    return 0;
+}
