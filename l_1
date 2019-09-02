@@ -19,7 +19,7 @@ void string_deleting(string &str)
     }
     cout << "\nString after first word delete is : "<<str<<endl;
 }
-
+//random comment
 void string_itterator (string &str)
 {
     int pos = str.find(' ');
